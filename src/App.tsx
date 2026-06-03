@@ -7,7 +7,7 @@ import LegendesDetail from './projects/legendes-animees/pages/ProjectDetail';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         {/* Main Portfolio */}
         <Route path="/" element={<Portfolio />} />
