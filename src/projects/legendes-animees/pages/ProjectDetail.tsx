@@ -1,16 +1,18 @@
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import { ArrowUpRight, ArrowLeft, MapPin, Calendar, Globe, Volume2, Loader2, Zap, Shield, Sword, Brain, Sparkles } from "lucide-react";
-import React, { useRef, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight, ArrowLeft, MapPin, Calendar, Globe, Volume2, VolumeX, Loader2, Zap, Shield, Sword, Brain, Sparkles } from "lucide-react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { PROJECTS } from "../constants";
-import { GoogleGenAI, Modality } from "@google/genai";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [isPlayingVoice, setIsPlayingVoice] = useState(false);
+  const [isLoadingVoice, setIsLoadingVoice] = useState(false);
   const [skinImages, setSkinImages] = useState<{name: string, url: string}[]>([]);
+  const [riotNumericKey, setRiotNumericKey] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const project = PROJECTS.find(p => p.slug === slug);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -18,19 +20,29 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0);
     setIsLoading(true);
     setSkinImages([]);
+    setRiotNumericKey(null);
+    // Stop any playing audio when navigating
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+      setIsPlayingVoice(false);
+    }
     
-    // Fetch champion skins dynamically to get high-res images
-    const fetchSkins = async () => {
+    const fetchChampionData = async () => {
       try {
         const listRes = await fetch('https://ddragon.leagueoflegends.com/cdn/13.24.1/data/fr_FR/champion.json');
         const listData = await listRes.json();
-        let riotId = null;
+        let riotId: string | null = null;
+        let numericKey: string | null = null;
         for (const champ of Object.values<any>(listData.data)) {
           if (project?.title.toLowerCase().includes(champ.name.toLowerCase()) || project?.slug.toLowerCase().includes(champ.id.toLowerCase())) {
             riotId = champ.id;
+            numericKey = champ.key; // numeric ID e.g. "103" for Ahri
             break;
           }
         }
+
+        if (numericKey) setRiotNumericKey(numericKey);
         
         if (riotId) {
           const detailRes = await fetch(`https://ddragon.leagueoflegends.com/cdn/13.24.1/data/fr_FR/champion/${riotId}.json`);
@@ -45,13 +57,19 @@ export default function ProjectDetail() {
           }
         }
       } catch (e) {
-        console.error("Erreur lors de la récupération des skins :", e);
+        console.error("Erreur lors de la récupération des données champion :", e);
       }
     };
-    if (project) fetchSkins();
+    if (project) fetchChampionData();
 
     const timer = setTimeout(() => setIsLoading(false), 1200);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, [slug, project]);
 
   if (!project) return null;
@@ -59,67 +77,53 @@ export default function ProjectDetail() {
   const nextProject = PROJECTS[(PROJECTS.indexOf(project) + 1) % PROJECTS.length];
   const theme = project.theme || { bg: "#0F0F0F", accent: "#C2A878", secondary: "#C2A878" };
 
-  const playChampionVoice = async () => {
-    if (isPlayingVoice) return;
-    
-    // Check if API key is defined
-    if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === "MY_GEMINI_API_KEY") {
-      alert("Pour utiliser la voix humaine par IA, veuillez ajouter votre clé API Gemini dans un fichier .env à la racine de votre projet sous le nom GEMINI_API_KEY.");
+  const toggleChampionVoice = useCallback(() => {
+    // If already playing — stop
+    if (isPlayingVoice) {
+      audioRef.current?.pause();
+      audioRef.current = null;
+      setIsPlayingVoice(false);
       return;
     }
-    
-    setIsPlayingVoice(true);
-    
-    try {
-      // Initialize Gemini AI
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY as string });
-      const textToRead = project.biography || project.longDescription || project.description;
-      
-      const response = await ai.models.generateContent({
-        model: "gemini-1.5-flash",
-        contents: [{ parts: [{ text: `Tu es le narrateur de l'univers de League of Legends. Lis cette biographie avec une voix apaisante, humaine, grave et narrative, en français : ${textToRead}` }] }],
-        config: {
-          responseModalities: [Modality.AUDIO],
-          speechConfig: {
-            voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: project.voice as any },
-            },
-          },
-        },
-      });
 
-      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      if (base64Audio) {
-        const binaryString = window.atob(base64Audio);
-        const len = binaryString.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) {
-          bytes[i] = binaryString.charCodeAt(i);
-        }
-
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
-        const audioBuffer = audioContext.createBuffer(1, bytes.length / 2, 24000);
-        const channelData = audioBuffer.getChannelData(0);
-        const dataView = new DataView(bytes.buffer);
-
-        for (let i = 0; i < bytes.length / 2; i++) {
-          channelData[i] = dataView.getInt16(i * 2, true) / 32768.0;
-        }
-
-        const source = audioContext.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(audioContext.destination);
-        source.onended = () => setIsPlayingVoice(false);
-        source.start();
-      } else {
-        setIsPlayingVoice(false);
-      }
-    } catch (error) {
-      console.error("Erreur de l'API audio IA :", error);
-      setIsPlayingVoice(false);
-      alert("Erreur lors de la génération de la voix par l'IA. Vérifiez votre clé ou la connexion.");
+    if (!riotNumericKey) {
+      console.warn("Champion numeric key not yet loaded.");
+      return;
     }
-  };
+
+    setIsLoadingVoice(true);
+
+    // Riot CDN champion-select voice line URL
+    const voiceUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-select/v1/sounds/en_US/champion/${riotNumericKey}/voice/champion-select-vo.ogg`;
+
+    const audio = new Audio(voiceUrl);
+    audio.crossOrigin = "anonymous";
+    audioRef.current = audio;
+
+    audio.addEventListener('canplaythrough', () => {
+      setIsLoadingVoice(false);
+      setIsPlayingVoice(true);
+      audio.play().catch(err => {
+        console.error("Playback error:", err);
+        setIsPlayingVoice(false);
+        setIsLoadingVoice(false);
+      });
+    }, { once: true });
+
+    audio.addEventListener('ended', () => {
+      setIsPlayingVoice(false);
+      audioRef.current = null;
+    }, { once: true });
+
+    audio.addEventListener('error', () => {
+      console.warn("Voice line unavailable for this champion.");
+      setIsLoadingVoice(false);
+      setIsPlayingVoice(false);
+      audioRef.current = null;
+    }, { once: true });
+
+    audio.load();
+  }, [isPlayingVoice, riotNumericKey]);
 
   const AbilityIcon = ({ iconName }: { iconName: string }) => {
     switch (iconName) {
@@ -237,21 +241,39 @@ export default function ProjectDetail() {
                  
                  {/* Voice Play Button */}
                  <div className="mt-8 pt-8 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-[2px] opacity-40 block">Fréquence Vocale</span>
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] uppercase tracking-[2px] opacity-40 block">Voix du Champion</span>
+                      {isPlayingVoice && (
+                        <div className="flex gap-[3px] items-end h-4">
+                          {[1,2,3,4,5].map(i => (
+                            <motion.div
+                              key={i}
+                              className="w-[3px] rounded-full"
+                              style={{ backgroundColor: theme.accent }}
+                              animate={{ height: ['4px', '16px', '4px'] }}
+                              transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.1, ease: 'easeInOut' }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
                     <button 
-                      onClick={playChampionVoice}
-                      className="group flex items-center gap-3 px-6 py-3 border border-white/10 hover:border-white/40 bg-white/5 transition-all relative overflow-hidden"
+                      onClick={toggleChampionVoice}
+                      disabled={isLoadingVoice}
+                      className="group flex items-center gap-3 px-6 py-3 border border-white/10 hover:border-white/40 bg-white/5 transition-all relative overflow-hidden disabled:opacity-50"
                       style={{ color: theme.accent }}
                     >
                       <div className="absolute inset-0 bg-white/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                       <div className="relative z-10 flex items-center gap-3">
-                        {isPlayingVoice ? (
+                        {isLoadingVoice ? (
                           <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : isPlayingVoice ? (
+                          <VolumeX className="w-4 h-4 group-hover:scale-110 transition-transform" />
                         ) : (
                           <Volume2 className="w-4 h-4 group-hover:scale-110 transition-transform" />
                         )}
                         <span className="text-[10px] uppercase tracking-[2px]">
-                          {isPlayingVoice ? "Arrêter la Narration" : "Narration du Lore"}
+                          {isLoadingVoice ? "Chargement..." : isPlayingVoice ? "Arrêter" : "Écouter la Voix"}
                         </span>
                       </div>
                     </button>
