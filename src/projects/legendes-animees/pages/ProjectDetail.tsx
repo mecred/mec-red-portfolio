@@ -12,6 +12,7 @@ export default function ProjectDetail() {
   const [isLoadingVoice, setIsLoadingVoice] = useState(false);
   const [skinImages, setSkinImages] = useState<{name: string, url: string}[]>([]);
   const [riotNumericKey, setRiotNumericKey] = useState<string | null>(null);
+  const [officialLore, setOfficialLore] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const project = PROJECTS.find(p => p.slug === slug);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export default function ProjectDetail() {
     setIsLoading(true);
     setSkinImages([]);
     setRiotNumericKey(null);
+    setOfficialLore(null);
     // Stop any playing audio when navigating
     if (audioRef.current) {
       audioRef.current.pause();
@@ -34,8 +36,19 @@ export default function ProjectDetail() {
         const listData = await listRes.json();
         let riotId: string | null = null;
         let numericKey: string | null = null;
+
+        const normalizedTitle = project?.title.toLowerCase().replace(/\bmf\b/g, 'miss fortune') || '';
+        const normalizedSlug = project?.slug.toLowerCase().replace(/miss-fortune/g, 'missfortune') || '';
+
         for (const champ of Object.values<any>(listData.data)) {
-          if (project?.title.toLowerCase().includes(champ.name.toLowerCase()) || project?.slug.toLowerCase().includes(champ.id.toLowerCase())) {
+          const champName = champ.name.toLowerCase();
+          const champId = champ.id.toLowerCase();
+          if (
+            normalizedTitle.includes(champName) ||
+            normalizedSlug.includes(champId) ||
+            project?.title.toLowerCase().includes(champName) ||
+            project?.slug.toLowerCase().includes(champId)
+          ) {
             riotId = champ.id;
             numericKey = champ.key; // numeric ID e.g. "103" for Ahri
             break;
@@ -48,12 +61,17 @@ export default function ProjectDetail() {
           const detailRes = await fetch(`https://ddragon.leagueoflegends.com/cdn/13.24.1/data/fr_FR/champion/${riotId}.json`);
           const detailData = await detailRes.json();
           const champData = detailData.data[riotId];
-          if (champData && champData.skins) {
-             const mappedSkins = champData.skins.map((s: any) => ({
-                name: s.name === 'default' ? 'Classique' : s.name,
-                url: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${riotId}_${s.num}.jpg`
-             }));
-             setSkinImages(mappedSkins);
+          if (champData) {
+             if (champData.skins) {
+                const mappedSkins = champData.skins.map((s: any) => ({
+                   name: s.name === 'default' ? 'Classique' : s.name,
+                   url: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${riotId}_${s.num}.jpg`
+                }));
+                setSkinImages(mappedSkins);
+             }
+             if (champData.lore) {
+                setOfficialLore(champData.lore);
+             }
           }
         }
       } catch (e) {
@@ -93,8 +111,8 @@ export default function ProjectDetail() {
 
     setIsLoadingVoice(true);
 
-    // Riot CDN champion-select voice line URL
-    const voiceUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-select/v1/sounds/en_US/champion/${riotNumericKey}/voice/champion-select-vo.ogg`;
+    // CommunityDragon French champion-select voice line URL
+    const voiceUrl = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/fr_fr/v1/champion-choose-vo/${riotNumericKey}.ogg`;
 
     const audio = new Audio(voiceUrl);
     audio.crossOrigin = "anonymous";
@@ -355,7 +373,7 @@ export default function ProjectDetail() {
                     </div>
                     <span className="text-[10px] uppercase tracking-[4px] opacity-40 block mb-10">Archives de Jeunesse & Ascension</span>
                     <p className="text-xl font-light leading-relaxed opacity-60 text-justify">
-                       {project.biography}
+                       {officialLore || project.biography}
                     </p>
                  </div>
               </div>
