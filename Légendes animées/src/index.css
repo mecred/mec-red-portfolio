@@ -30,3 +30,13 @@
     text-wrap: balance;
   }
 }
+
+@layer base {
+  /* Responsive helpers for the Légendes animées site */
+  h1 { font-size: clamp(1.75rem, 5.5vw, 4.5rem); }
+  h2 { font-size: clamp(1.125rem, 3vw, 2rem); }
+  p { font-size: clamp(.9rem, 1.6vw, 1rem); }
+  img { max-width: 100%; height: auto; display: block; }
+  .page-padding { padding-inline: 1rem; }
+  @media (min-width: 640px) { .page-padding { padding-inline: 1.5rem; } }
+}

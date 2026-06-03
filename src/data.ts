@@ -17,29 +17,28 @@ export const skills = [
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Dashboard",
-    description: "A comprehensive admin dashboard for managing products, viewing analytics, and tracking orders in real-time. Features dark mode, responsive data tables, and interactive charts.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
-    liveUrl: "#",
-    githubUrl: "#",
-    imagePlaceholder: "bg-gradient-to-br from-blue-500 to-purple-600",
-  },
-  {
-    id: 2,
     title: "Sunny Glow",
     description: "An e-commerce platform for an Algerian natural skincare brand, featuring product showcases and a seamless shopping experience.",
     tech: ["React", "Next.js", "Tailwind CSS", "E-Commerce"],
     liveUrl: "https://www.sunny-glow.com",
     githubUrl: "#",
     imagePlaceholder: "bg-gradient-to-br from-yellow-400 to-orange-500",
+    images: [
+      "/images/projects/sunny_home.png",
+      "/images/projects/sunny_products.png",
+    ],
   },
   {
-    id: 3,
+    id: 2,
     title: "Légendes Animées",
     description: "An immersive League of Legends explorer featuring interactive champion cards, lore, skin galleries, and voice lines synchronised with the official game API.",
     tech: ["React", "TypeScript", "Tailwind CSS", "REST API", "State Management"],
     liveUrl: "/legendes-animees",
     githubUrl: "#",
     imagePlaceholder: "bg-gradient-to-br from-indigo-600 to-purple-800",
+    images: [
+      "/images/projects/legendes_home.png",
+      "/images/projects/legendes_detail.png",
+    ],
   },
 ];

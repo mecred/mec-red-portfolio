@@ -8,7 +8,7 @@ export default function Navigation() {
   const isHome = location.pathname === "/legendes-animees";
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[100] p-10 flex justify-between items-start mix-blend-difference">
+    <nav className="fixed top-0 left-0 w-full z-[100] p-6 md:p-10 flex justify-between items-start mix-blend-difference">
       <div className="flex flex-col md:flex-row gap-4 md:items-center">
         <Link to="/legendes-animees" className="text-2xl font-serif italic tracking-tighter">
           Aesthetica.

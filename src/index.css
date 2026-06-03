@@ -21,3 +21,21 @@ body {
 ::selection {
   @apply bg-[#C5A059]/30 text-[#C5A059];
 }
+
+@layer base {
+  /* Responsive typography and containers */
+  html { font-size: 16px; }
+
+  h1 { font-size: clamp(2rem, 6vw, 5rem); }
+  h2 { font-size: clamp(1.25rem, 3.2vw, 2.25rem); }
+  p, li { font-size: clamp(.9rem, 1.6vw, 1.05rem); }
+
+  /* Ensure images scale on small screens */
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* Slightly reduce horizontal padding on small screens */
+  .page-padding { padding-left: 1rem; padding-right: 1rem; }
+  @media (min-width: 640px) {
+    .page-padding { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+}

@@ -37,10 +37,6 @@ export const translations = {
       githubRepo: 'GitHub Repo',
       items: [
         {
-          title: "E-Commerce Dashboard",
-          description: "A comprehensive admin dashboard for managing products, viewing analytics, and tracking orders in real-time. Features dark mode, responsive data tables, and interactive charts."
-        },
-        {
           title: "Sunny Glow",
           description: "An e-commerce platform for a natural skincare brand, featuring product showcases, special bundles, and a seamless shopping experience."
         },
@@ -58,6 +54,18 @@ export const translations = {
     },
     footer: {
       getInTouch: 'Get in Touch'
+    },
+    projectModal: {
+      close: "Close",
+      privateNotice: "Private Repository & Deployment",
+      privateDescription: "This project contains proprietary code or is hosted on a private enterprise server under non-disclosure conditions. Therefore, direct source code access and public live links are restricted.",
+      demoRequest: "Request a Private Demo",
+      demoDescription: "If you are interested in a live walkthrough of this application's features and architecture, feel free to get in touch.",
+      contactBtn: "Get in Touch",
+      techUsed: "Technologies Used",
+      liveSite: "Live Site",
+      viewCode: "View Code",
+      detailsTitle: "Project Details",
     }
   },
   fr: {
@@ -96,10 +104,6 @@ export const translations = {
       githubRepo: 'Dépôt GitHub',
       items: [
         {
-          title: "Tableau de Bord E-Commerce",
-          description: "Un tableau de bord complet pour gérer les produits, consulter les analyses et suivre les commandes en temps réel. Comprend un mode sombre, des tableaux de données responsives et des graphiques interactifs."
-        },
-        {
           title: "Sunny Glow",
           description: "Une plateforme e-commerce pour une marque de soins naturels algérienne, proposant des vitrines de produits, des packs personnalisés et une expérience numérique fluide."
         },
@@ -117,6 +121,18 @@ export const translations = {
     },
     footer: {
       getInTouch: 'Entrer en Contact'
+    },
+    projectModal: {
+      close: "Fermer",
+      privateNotice: "Dépôt privé & Déploiement restreint",
+      privateDescription: "Ce projet contient du code propriétaire ou est hébergé sur un serveur d'entreprise privé sous conditions de non-divulgation. L'accès direct au code source et aux liens publics est restreint.",
+      demoRequest: "Demander une démo privée",
+      demoDescription: "Si vous souhaitez obtenir une démonstration en direct des fonctionnalités et de l'architecture de cette application, n'hésitez pas à me contacter.",
+      contactBtn: "Entrer en Contact",
+      techUsed: "Technologies Utilisées",
+      liveSite: "Site en Direct",
+      viewCode: "Voir le Code",
+      detailsTitle: "Détails du Projet",
     }
   }
 };

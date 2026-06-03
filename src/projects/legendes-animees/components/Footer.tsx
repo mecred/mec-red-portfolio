@@ -4,10 +4,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="px-10 py-60 border-t border-white/10 relative overflow-hidden bg-[#0F0F0F] text-[#E5E5E5]">
+    <footer id="contact" className="px-6 md:px-10 py-20 md:py-60 border-t border-white/10 relative overflow-hidden bg-[#0F0F0F] text-[#E5E5E5]">
       <div className="grid grid-cols-12 gap-10 relative z-10">
-        <div className="col-span-12 md:col-span-6">
-           <h2 className="text-6xl md:text-8xl font-serif italic mb-10 leading-tight">Légendes <br /> Éternelles.</h2>
+          <div className="col-span-12 md:col-span-6">
+            <h2 className="text-3xl sm:text-5xl md:text-8xl font-serif italic mb-10 leading-tight">Légendes <br /> Éternelles.</h2>
            <p className="max-w-md text-sm font-light opacity-60 leading-relaxed mb-12">
              Dans les méandres de Runeterra, chaque histoire est une constellation. Nous archivons non seulement la force, mais l'esthétique pure de ceux qui ont osé défier le destin.
            </p>
@@ -27,7 +27,7 @@ export default function Footer() {
 
       {/* Watermark Background Text */}
       <div className="absolute bottom-0 right-0 opacity-[0.02] select-none pointer-events-none translate-y-1/2">
-         <span className="text-[30vw] font-serif italic whitespace-nowrap">IMMORTEL</span>
+        <span className="text-[14vw] sm:text-[20vw] md:text-[30vw] font-serif italic whitespace-nowrap">IMMORTEL</span>
       </div>
     </footer>
   );

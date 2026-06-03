@@ -27,6 +27,25 @@ export default function Header() {
     { name: navTranslations.contact, href: '#contact' },
   ];
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    if (href === '#') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const LanguageSwitcher = () => (
     <div className="relative flex items-center bg-white/[0.03] border border-white/5 rounded-full p-1 ml-2">
       <div className="relative flex items-center text-xs uppercase tracking-wider font-semibold">
@@ -69,7 +88,11 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="relative group text-2xl font-serif tracking-widest text-[#C5A059] font-bold transition-all duration-300 hover:opacity-90">
+        <a 
+          href="#" 
+          onClick={(e) => scrollToSection(e, '#')}
+          className="relative group text-2xl font-serif tracking-widest text-[#C5A059] font-bold transition-all duration-300 hover:opacity-90"
+        >
           {personalInfo.name}
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C5A059] transition-all duration-300 group-hover:w-full"></span>
         </a>
@@ -81,6 +104,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
                 onMouseEnter={() => setHoveredLink(link.href)}
                 onMouseLeave={() => setHoveredLink(null)}
                 className="relative px-4 py-2 text-white/70 hover:text-white transition-colors duration-200"
@@ -130,7 +154,7 @@ export default function Header() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => scrollToSection(e, link.href)}
                   className="text-xs uppercase tracking-[0.2em] font-semibold text-white/70 hover:text-[#C5A059] py-2 border-b border-white/5 last:border-0 transition-colors duration-200"
                 >
                   {link.name}
