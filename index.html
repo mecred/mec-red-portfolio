@@ -116,10 +116,13 @@
     }
     .hero-cta:hover { opacity: 0.85; }
     .hero-cta svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-    .hero-visual { display: flex; justify-content: center; }
-    .hero-visual img {
-      width: 100%; max-width: 520px; aspect-ratio: 4/5; object-fit: cover;
-    }
+    .hero-visual { display: grid; gap: 20px; justify-items: center; }
+    .hero-media { position: relative; width: 100%; max-width: 620px; border-radius: 32px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.14); }
+    .hero-media img { width: 100%; height: auto; display: block; object-fit: cover; }
+    .hero-video-preview { position: absolute; right: 18px; bottom: 18px; width: 132px; height: 132px; border-radius: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 18px 40px rgba(0,0,0,0.16); }
+    .hero-video-preview video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-secondary { display: grid; gap: 20px; width: 100%; max-width: 620px; }
+    .hero-secondary img { width: 100%; border-radius: 28px; box-shadow: 0 24px 70px rgba(0,0,0,0.14); }
 
     section { padding: 100px 0; scroll-margin-top: 80px; }
     section[id] { scroll-margin-top: 80px; }
@@ -347,7 +350,15 @@
           </a>
         </div>
         <div class="hero-visual">
-          <img src="mqml9qrh-diastema_dental_clinic_1781973833671.jpeg" alt="Diastema Dental Clinic — Façade" loading="lazy" />
+          <div class="hero-media">
+            <img src="mqml9qrh-diastema_dental_clinic_1781973833671.jpeg" alt="Diastema Dental Clinic — Façade" loading="lazy" />
+            <div class="hero-video-preview">
+              <video src="mqmm5hbb-3907211768492017596.mp4" muted loop playsinline poster="mqml9qrh-diastema_dental_clinic_1781973833671.jpeg" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
+            </div>
+          </div>
+          <div class="hero-secondary">
+            <img src="mqml9qr1-diastema_dental_clinic_1781973843200.jpeg" alt="Docteure Maissa Chouial" loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
