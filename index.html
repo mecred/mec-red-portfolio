@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diastema Dental Clinic — Dr Maissa Chouial | Alger</title>
+  <meta name="description" content="Clinique dentaire d'exception à Alger dirigée par le Dr Maissa Chouial. Soins généraux, implantologie, orthodontie invisible, facettes et couronnes zircone. Prenez rendez-vous." />
+  <meta property="og:title" content="Diastema Dental Clinic — Dr Maissa Chouial" />
+  <meta property="og:description" content="Soins dentaires d'exception à Alger. Votre sourire, notre art." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_DZ" />
+  <meta property="og:image" content="mqml9qrh-diastema_dental_clinic_1781973833671.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🦷</text></svg>" />
+  <style>
+    :root {
+      --bg:      oklch(97% 0.008 80);
+      --surface: oklch(100% 0 0);
+      --fg:      oklch(18% 0.02 45);
+      --muted:   oklch(45% 0.025 65);
+      --border:  oklch(88% 0.012 70);
+      --accent:  oklch(55% 0.14 40);
+      --font-display: 'Iowan Old Style', 'Charter', Georgia, serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    h1 { font-size: clamp(42px, 7vw, 76px); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(32px, 4.5vw, 52px); letter-spacing: -0.015em; }
+    h3 { font-size: clamp(22px, 2.5vw, 30px); letter-spacing: -0.01em; }
+    h4 { font-size: clamp(18px, 1.8vw, 22px); font-weight: 510; letter-spacing: -0.01em; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: block;
+    }
+    p { max-width: 65ch; }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0; transition: background 0.3s, box-shadow 0.3s;
+    }
+    header.scrolled { background: var(--surface); box-shadow: 0 1px 0 var(--border); }
+    header .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; color: var(--fg); }
+    .logo em { font-style: italic; color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 14px; letter-spacing: 0.03em; color: var(--muted);
+      transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--fg); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--fg); transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: transparent; color: var(--fg) !important;
+      padding: 10px 22px; border-radius: 0; border: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { border-color: var(--fg); color: var(--fg) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--fg); transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 0 80px; background: var(--bg); position: relative; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, oklch(55% 0.14 40 / 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-text .eyebrow {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    }
+    .hero-text h1 { margin-bottom: 24px; }
+    .hero-text p { font-size: 18px; color: var(--muted); margin-bottom: 36px; line-height: 1.6; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--accent); color: #fff; padding: 16px 36px;
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+    .hero-cta svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .hero-visual { display: flex; justify-content: center; }
+    .hero-visual img {
+      width: 100%; max-width: 520px; aspect-ratio: 4/5; object-fit: cover;
+    }
+
+    section { padding: 100px 0; scroll-margin-top: 80px; }
+    section[id] { scroll-margin-top: 80px; }
+    .hero { scroll-margin-top: 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header p { color: var(--muted); font-size: 18px; margin-top: 16px; max-width: 56ch; }
+
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-photo img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    }
+    .about-text h2 { margin-bottom: 24px; }
+    .about-text p { margin-bottom: 16px; color: var(--muted); }
+    .about-signature { margin-top: 24px; font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--fg); opacity: 0.7; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
+    .service-card {
+      background: var(--surface); padding: 40px 32px;
+      transition: background 0.2s, box-shadow 0.2s;
+      border-top: 2px solid transparent;
+      margin-top: -2px;
+      position: relative;
+    }
+    .service-card:hover {
+      background: oklch(97% 0.008 80);
+      border-top-color: var(--accent);
+    }
+    .service-icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--fg); opacity: 0.5; }
+    .service-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .service-card h3 { margin-bottom: 12px; }
+    .service-card p { font-size: 15px; color: var(--muted); line-height: 1.5; }
+    .service-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; margin-bottom: 16px; }
+    .service-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--surface); }
+    .service-featured img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+    .service-featured .service-body { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .service-featured .service-body h3 { font-size: clamp(24px, 2.5vw, 32px); margin-bottom: 16px; }
+    .service-featured .service-body p { font-size: 16px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 800px) {
+      .service-featured { grid-template-columns: 1fr; }
+      .service-featured img { max-height: 260px; }
+    }
+
+    #gallery { background: var(--bg); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 40px; }
+    .ba-compare { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0; position: relative; overflow: hidden; }
+    .ba-compare .ba-side img { transition: transform 0.4s ease; }
+    .ba-compare:hover .ba-side img { transform: scale(1.04); }
+    .ba-side { position: relative; }
+    .ba-side img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .ba-divider { background: var(--border); width: 1px; height: 100%; }
+    .ba-label {
+      position: absolute; bottom: 8px; left: 8px;
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(0,0,0,0.5); color: #fff;
+      padding: 3px 8px; line-height: 1;
+    }
+    .ba-label.ba-after { left: auto; right: 8px; }
+
+
+    #contact { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info h3 { margin-bottom: 24px; }
+    .contact-info-item { display: flex; gap: 16px; margin-bottom: 24px; }
+    .contact-info-item svg { width: 22px; height: 22px; stroke: var(--muted); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 2px; }
+    .contact-info-item strong { display: block; font-size: 14px; font-weight: 510; letter-spacing: 0.02em; margin-bottom: 4px; }
+    .contact-info-item span { color: var(--muted); font-size: 15px; }
+    .hours-list { margin-top: 8px; }
+    .hours-list li { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .hours-list li:last-child { border-bottom: none; }
+    .hours-list .day { color: var(--muted); }
+    .hours-list .time { font-weight: 510; }
+    .contact-form label { display: block; font-size: 12px; font-family: var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; color: var(--muted); }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 14px 16px; border: 1px solid var(--border);
+      background: var(--bg); font-family: var(--font-body); font-size: 15px;
+      color: var(--fg); outline: none; transition: border 0.2s; margin-bottom: 20px; border-radius: 0;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form button {
+      background: var(--accent); color: #fff; border: none; padding: 14px 32px;
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; cursor: pointer; transition: opacity 0.2s;
+    }
+    .contact-form button:hover { opacity: 0.85; }
+
+    #blog { background: var(--bg); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .blog-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+    .blog-featured img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .blog-featured h3 { font-size: clamp(24px, 2.5vw, 34px); margin-bottom: 12px; }
+    .blog-featured p { font-size: 16px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 800px) { .blog-featured { grid-template-columns: 1fr; gap: 24px; } }
+    .blog-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 16px; }
+    .blog-card .blog-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .blog-card h3 { font-size: clamp(18px, 1.6vw, 22px); margin-bottom: 10px; }
+    .blog-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .blog-card a { display: inline-block; margin-top: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg); border-bottom: 1px solid var(--border); transition: border-color 0.2s; }
+    .blog-card a:hover { border-color: var(--fg); }
+
+    .cta-section { background: var(--fg); color: #fff; text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px; }
+    .cta-section p { color: oklch(70% 0.01 70); margin-bottom: 32px; max-width: 48ch; margin-left: auto; margin-right: auto; }
+
+    footer { background: oklch(14% 0.015 45); color: oklch(70% 0.01 70); padding: 48px 0 32px; }
+    footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    footer h4 { font-family: var(--font-display); font-size: 18px; color: #fff; margin-bottom: 16px; }
+    footer p { font-size: 14px; line-height: 1.6; }
+    footer ul li { margin-bottom: 8px; }
+    footer ul a { font-size: 14px; color: oklch(60% 0.01 70); transition: color 0.2s; }
+    footer ul a:hover { color: #fff; }
+    .footer-bottom { grid-column: 1 / -1; border-top: 1px solid oklch(25% 0.01 45); padding-top: 24px; margin-top: 24px; font-size: 13px; text-align: center; color: oklch(45% 0.01 70); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero { padding: 120px 0 60px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      #contact .map-wrap { aspect-ratio: 16/9; }
+      footer .container { grid-template-columns: 1fr 1fr; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: var(--surface); flex-direction: column;
+        padding: 100px 32px 32px; gap: 24px;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.06); transition: right 0.35s ease;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 16px; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
+      .gallery-grid .ba-compare { grid-template-columns: 1fr 1px 1fr; }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+      footer .container { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: clamp(32px, 10vw, 48px); }
+      section { padding: 60px 0; }
+      #contact .map-wrap { aspect-ratio: 4/3; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid .ba-compare { grid-template-columns: 1fr; gap: 2px; }
+      .gallery-grid .ba-compare .ba-divider { display: none; }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); gap: 3px; }
+      .blog-featured { grid-template-columns: 1fr; gap: 16px; }
+    }
+    @media (min-width: 641px) and (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      header { position: static; box-shadow: none; }
+      .hero { min-height: auto; padding: 40px 0; }
+      .hero-cta, .nav-cta, .hamburger, .contact-form button, .cta-section a { display: none; }
+      .map-wrap { break-inside: avoid; page-break-inside: avoid; }
+      section { padding: 40px 0; break-inside: avoid; }
+      .gallery-grid { break-inside: avoid; }
+      footer { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container">
+      <a href="#hero" class="logo">Diast<em>ema</em></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav">
+        <a href="#hero" class="active">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#contact">Contact</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact" class="nav-cta">Rendez-vous</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text" style="opacity:0;animation:fadeIn 0.8s ease 0.2s forwards;">
+          <div class="eyebrow">Clinique dentaire — Alger</div>
+          <h1>Votre sourire,<br>notre art</h1>
+          <p>
+            Bienvenue au Diastema Dental Clinic. Entre tradition médicale et
+            exigence esthétique, le Dr Maissa Chouial et son équipe vous
+            offrent des soins dentaires d'exception dans un cadre élégant
+            au cœur d'Alger.
+          </p>
+          <a href="#contact" class="hero-cta">
+            Prenez rendez-vous
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-visual">
+          <img src="mqml9qrh-diastema_dental_clinic_1781973833671.jpeg" alt="Diastema Dental Clinic — Façade" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="mqml9qr1-diastema_dental_clinic_1781973843200.jpeg" alt="Dr Maissa Chouial" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <span class="section-label">À propos</span>
+          <h2>Dr Maissa Chouial</h2>
+          <p>
+            Chirurgienne-dentiste installée à Alger, le Dr Maissa Chouial a
+            fondé le Diastema Dental Clinic avec une vision claire : allier
+            l'excellence des soins à une approche humaine et personnalisée.
+          </p>
+          <p>
+            Formée aux techniques les plus récentes de la dentisterie
+            esthétique et implantaire, elle met son expertise au service de
+            vos sourires. Chaque traitement est pensé sur mesure, dans le
+            respect de votre anatomie et de vos attentes.
+          </p>
+          <p>
+            La clinique réunit une équipe pluridisciplinaire de spécialistes
+            — orthodontie, parodontologie, implantologie, chirurgie buccale —
+            pour vous offrir une prise en charge complète sous un même toit.
+          </p>
+          <div class="about-signature">— Dr Maissa Chouial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="section-label">Nos soins</span>
+        <h2>Une médecine dentaire complète</h2>
+        <p class="mx-auto">
+          De la prévention à la chirurgie esthétique, nous prenons soin de
+          votre sourire à chaque étape.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg></div>
+          <h3>Dentisterie générale</h3>
+          <p>Consultations de routine, détartrage, soins des caries et traitements conservateurs.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div>
+          <h3>Implantologie</h3>
+          <p>Remplacement des dents manquantes par implants ostéo-intégrés, de la pose à la couronne.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <h3>Orthodontie invisible</h3>
+          <p>Aligneurs transparents sur-mesure pour un sourire harmonieux sans bagues visibles.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Blanchiment dentaire</h3>
+          <p>Protocoles professionnels pour un éclat naturel et durable, en cabinet ou à domicile.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M4 22c0-4 3.6-8 8-8s8 4 8 8"/></svg></div>
+          <h3>Facettes & Sourire Hollywood</h3>
+          <p>Facettes céramique ultra-fines pour une transformation esthétique complète de votre sourire.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 12h3l2-5 4 10 2-5h3"/></svg></div>
+          <h3>Parodontologie</h3>
+          <p>Traitement des gencives et de l'os de soutien, prévention et soins de la maladie parodontale.</p>
+        </div>
+        <div class="service-featured">
+          <img src="mqmlxu7h-image.png" alt="Couronne en zircone" loading="lazy" />
+          <div class="service-body">
+            <span class="section-label">Nouveau</span>
+            <h3>Couronne en zircone</h3>
+            <p>Restaurations esthétiques ultra-résistantes en zircone monolithique — une solution discrète, durable et naturelle pour vos dents abîmées. Sans métal, sans compromis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="section-label">Galerie</span>
+        <h2>Avant & Après</h2>
+        <p class="mx-auto">Quelques transformations réalisées par le Dr Chouial et son équipe.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="ba-compare">
+          <div class="ba-side">
+            <img src="mqmlkaxe-diastema_dental_clinic_1781974269580.jpeg" alt="Avant" loading="lazy" />
+            <span class="ba-label">Avant</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-side">
+            <img src="mqmlkaxv-diastema_dental_clinic_1781974269580-_1_.jpeg" alt="Après" loading="lazy" />
+            <span class="ba-label ba-after">Après</span>
+          </div>
+        </div>
+        <div class="ba-compare">
+          <div class="ba-side">
+            <img src="mqmlklft-diastema_dental_clinic_1781974192465.jpeg" alt="Avant" loading="lazy" />
+            <span class="ba-label">Avant</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-side">
+            <img src="mqmlklge-diastema_dental_clinic_1781974192464.jpeg" alt="Après" loading="lazy" />
+            <span class="ba-label ba-after">Après</span>
+          </div>
+        </div>
+        <div class="ba-compare">
+          <div class="ba-side">
+            <img src="mqmlkxgc-diastema_dental_clinic_1781974127548.webp" alt="Avant" loading="lazy" />
+            <span class="ba-label">Avant</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-side">
+            <img src="mqmlkxgh-diastema_dental_clinic_1781974127550.webp" alt="Après" loading="lazy" />
+            <span class="ba-label ba-after">Après</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" style="background:var(--surface);padding:100px 0;">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="section-label">Témoignage</span>
+        <h2>Histoires de sourires</h2>
+        <p class="mx-auto">Le plus beau compliment ? Voir nos patientes rayonner après leurs soins.</p>
+      </div>
+      <div style="max-width:780px;margin:0 auto;text-align:center;">
+        <div class="testimonial-grid">
+          <img src="mqmm1vne-diastema_dental_clinic_1781973742431.jpeg" alt="Patiente sourire" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;" />
+          <img src="mqmm1vo0-diastema_dental_clinic_1781973742892.jpeg" alt="Patiente sourire" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;" />
+          <img src="mqmm1vow-diastema_dental_clinic_1781973759327.jpeg" alt="Patiente sourire" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;" />
+          <img src="mqmm1vpn-diastema_dental_clinic_1781973755397.jpeg" alt="Patiente sourire" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;" />
+        </div>
+        <blockquote style="font-family:var(--font-display);font-size:clamp(18px,2.2vw,26px);line-height:1.6;font-style:italic;color:var(--fg);max-width:650px;margin:0 auto;position:relative;">
+          <span style="font-size:64px;display:block;color:var(--fg);opacity:0.08;line-height:1;margin-bottom:-32px;font-style:normal;font-family:Georgia,serif;">&ldquo;</span>
+          Un sourire retrouvé, une confiance renouvelée. Après ses soins dentaires, notre patiente rayonne à nouveau. Chez Diastema Dental Clinic, nous ne faisons pas que soigner les dents — nous redonnons le sourire et la confiance en soi.
+          <div style="margin-top:24px;font-family:var(--font-body);font-size:13px;font-style:normal;letter-spacing:0.04em;color:var(--muted);">&mdash;&thinsp;Équipe Diastema Dental Clinic</div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2>Prêt à transformer votre sourire ?</h2>
+      <p>Prenez rendez-vous dès aujourd'hui pour une consultation personnalisée avec le Dr Maissa Chouial.</p>
+      <a href="#contact" class="hero-cta">
+        Prenez rendez-vous
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="section-label">Contact</span>
+        <h2>Nous trouver</h2>
+        <p class="mx-auto">Rue 13, 4C, Alger — en plein cœur de la ville.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Diastema Dental Clinic</h3>
+          <div class="contact-info-item">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><strong>Adresse</strong><span>Rue 13, N° 4C, Alger, Algérie</span></div>
+          </div>
+          <div class="contact-info-item">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <div><strong>Téléphone</strong><span>0662 29 28 29 / 0555 22 78 27</span></div>
+          </div>
+          <div class="contact-info-item">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div><strong>Email</strong><span>contact@diastema-dental.dz</span></div>
+          </div>
+          <div>
+            <strong style="display:block;margin-bottom:8px;font-size:14px;letter-spacing:0.02em;">Horaires d'ouverture</strong>
+            <ul class="hours-list">
+              <li><span class="day">Samedi — Jeudi</span><span class="time">09:00 – 17:00</span></li>
+              <li><span class="day">Vendredi</span><span class="time">Fermé</span></li>
+            </ul>
+          </div>
+          <div style="margin-top:32px;">
+            <strong style="display:block;margin-bottom:12px;font-size:14px;letter-spacing:0.02em;">Suivez-nous</strong>
+            <a href="https://www.instagram.com/diastema__dental__clinic/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);">
+              <svg viewBox="0 0 24 24" width="20" height="20" style="stroke:currentColor;fill:none;stroke-width:1.5;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @diastema__dental__clinic
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault();">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" placeholder="Votre nom" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="vous@exemple.com" required />
+          <label for="phone">Téléphone</label>
+          <input type="tel" id="phone" placeholder="+213 5 XX XX XX XX" />
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Décrivez votre demande…" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div class="map-wrap" style="margin-top:40px;width:100%;aspect-ratio:21/9;background:oklch(88% 0.012 70 / 0.3);overflow:hidden;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d204318.20627787195!2d3.1038342!3d36.729864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fadf467865733%3A0x3e8ddbd8c7a8f5c1!2sDiastema%20Dental%20Clinic%20-%20Dr%20Maissa%20Chouial!5e0!3m2!1sfr!2sdz!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <span class="section-label">Conseils</span>
+        <h2>Articles & astuces</h2>
+        <p class="mx-auto">Des conseils pour prendre soin de vos dents au quotidien, par l'équipe du Diastema Dental Clinic.</p>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-featured">
+          <div style="position:relative;">
+            <img src="mqmm5han-h_dental_products_1781975354540.jpeg" alt="Endo-mate X-Pendent et limes Ramo Medical" loading="lazy" />
+            <video src="mqmm5hbb-3907211768492017596.mp4" muted loop playsinline style="position:absolute;bottom:12px;right:12px;width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 2px 12px rgba(0,0,0,0.12);" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
+          </div>
+          <div>
+            <div class="blog-meta">20 juin 2026 · 4 min</div>
+            <h3>L'excellence en endodontie : Endo-mate X-Pendent & Limes Ramo Medical</h3>
+            <p>La réussite d'un traitement radiculaire repose sur l'équilibre parfait entre la maîtrise du geste et la performance des outils. Découvrez le duo incontournable sélectionné par H Dental pour une pratique sereine et efficace.</p>
+            <p style="font-size:13px;color:var(--fg);opacity:0.6;margin-top:10px;font-family:var(--font-mono);letter-spacing:0.03em;">Disponibilité immédiate · Contact : +213 6 71179483</p>
+            <a href="#">Lire l'article</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img src="mqml2z68-Capture-d_écran-2026-06-20-173724.png" alt="Blanchiment dentaire" loading="lazy" />
+          <div class="blog-meta">18 juin 2026 · 3 min</div>
+          <h3>Blanchiment dentaire : tout ce qu'il faut savoir</h3>
+          <p>Mythes, précautions et résultats attendus — notre guide complet pour un sourire éclatant en toute sécurité.</p>
+          <a href="#">Lire l'article</a>
+        </article>
+        <article class="blog-card">
+          <img src="mqml2z6f-Capture-d_écran-2026-06-20-173729.png" alt="Orthodontie" loading="lazy" />
+          <div class="blog-meta">12 juin 2026 · 4 min</div>
+          <h3>À quel âge consulter un orthodontiste ?</h3>
+          <p>Enfants, adolescents ou adultes — il n'est jamais trop tard pour corriger l'alignement de vos dents.</p>
+          <a href="#">Lire l'article</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>
+        <h4>Diast<em style="font-style:italic;">ema</em></h4>
+        <p>Clinique dentaire d'exception dirigée par le Dr Maissa Chouial. Soins généraux, esthétique, implantologie et orthodontie à Alger.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Dentisterie générale</a></li>
+          <li><a href="#services">Implantologie</a></li>
+          <li><a href="#services">Orthodontie invisible</a></li>
+          <li><a href="#services">Blanchiment</a></li>
+          <li><a href="#services">Facettes</a></li>
+          <li><a href="#services">Couronne zircone</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Rue 13, 4C, Alger</a></li>
+          <li><a href="tel:+213662292829">0662 29 28 29</a></li>
+          <li><a href="mailto:contact@diastema-dental.dz">contact@diastema-dental.dz</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Diastema Dental Clinic — Dr Maissa Chouial. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      document.querySelector('.logo').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      var hamburger = document.getElementById('hamburger');
+      var nav = document.getElementById('nav');
+      hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('active');
+          nav.classList.remove('open');
+        });
+      });
+
+      var sections = document.querySelectorAll('section[id], .hero');
+      var navLinks = nav.querySelectorAll('a:not(.nav-cta)');
+      function updateActive() {
+        var scrollY = window.scrollY + 120;
+        var current = '';
+        sections.forEach(function (sec) {
+          var top = sec.offsetTop;
+          var bottom = top + sec.offsetHeight;
+          if (scrollY >= top && scrollY < bottom) {
+            current = sec.getAttribute('id');
+          }
+        });
+        navLinks.forEach(function (link) {
+          var href = link.getAttribute('href');
+          link.classList.toggle('active', href === '#' + current || (current === 'hero' && href === '#hero'));
+        });
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () { updateActive(); ticking = false; });
+          ticking = true;
+        }
+      });
+      updateActive();
+
+      var form = document.querySelector('.contact-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('button');
+          var orig = btn.textContent;
+          var name = form.querySelector('#name').value;
+          var email = form.querySelector('#email').value;
+          var phone = form.querySelector('#phone').value;
+          var message = form.querySelector('#message').value;
+
+          btn.disabled = true;
+          btn.textContent = 'Envoi en cours…';
+          btn.style.opacity = '0.6';
+
+          // Envoyer les données à l'API backend
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, email: email, phone: phone, message: message })
+          })
+          .then(function(response) { return response.json(); })
+          .then(function(data) {
+            if (data.success) {
+              btn.textContent = 'Message envoyé \u2713';
+              btn.style.opacity = '0.7';
+              setTimeout(function () {
+                btn.textContent = orig;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                form.reset();
+              }, 1800);
+            } else {
+              btn.textContent = 'Erreur: ' + (data.error || 'Erreur inconnue');
+              btn.style.opacity = '0.6';
+              setTimeout(function () {
+                btn.textContent = orig;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+              }, 3000);
+            }
+          })
+          .catch(function(error) {
+            console.error('Erreur:', error);
+            btn.textContent = 'Erreur réseau';
+            btn.style.opacity = '0.6';
+            setTimeout(function () {
+              btn.textContent = orig;
+              btn.style.opacity = '1';
+              btn.disabled = false;
+            }, 3000);
+          });
+        });
+      }
+
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+    })();
+  </script>
+</body>
+</html>

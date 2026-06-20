@@ -1,0 +1,11 @@
+.env.local
+.env
+node_modules
+.git
+*.md
+.DS_Store
+*.htm
+mqml*.png
+mqml*.jpeg
+mqml*.webp
+mqml*.mp4
